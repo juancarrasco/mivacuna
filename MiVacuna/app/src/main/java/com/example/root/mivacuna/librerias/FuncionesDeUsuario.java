@@ -9,8 +9,8 @@ import org.json.JSONObject;
 public class FuncionesDeUsuario {
     private JSONparser jsonParser;
     //URLS
-    private static String loginURL = " http://192.168.0.104:8000/api/v1/iniciarSesion";
-    private static String CreateURL = "http://192.168.0.104:8000//api/login/createUser";
+    private static String loginURL = "http://192.168.0.102:8000/api/v1/iniciarSesion";
+    private static String CreateURL = "http://192.168.0.102:8000/api/v1/crearUser";
 
     public FuncionesDeUsuario() {
         this.jsonParser = new JSONparser();
@@ -29,6 +29,17 @@ public class FuncionesDeUsuario {
         // Log.i("LoginActivity","Json= "+json1.toString());
         return json;
     }
-
+ public JSONObject registroUser(String name,String email, String password) throws JSONException {
+        // Building Parameters
+        // List params = new ArrayList();
+        JSONObject json1 = new JSONObject();
+        json1.accumulate("name", name);
+        json1.accumulate("email", email);
+        json1.accumulate("password", password);
+        JSONObject json = jsonParser.getJSON(CreateURL, json1);
+        //jsonParser.post(loginURL,json1);
+        // Log.i("LoginActivity","Json= "+json1.toString());
+        return json;
+    }
 
 }

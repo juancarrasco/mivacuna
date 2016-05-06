@@ -22,7 +22,7 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/abc_switch_thumb_material">
 
         <LinearLayout
@@ -78,10 +78,14 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <ImageButton
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/registro_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginTop="16dp"
+        android:text="@string/registro"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        android:background="@color/accent_material_light" />
 </LinearLayout>
