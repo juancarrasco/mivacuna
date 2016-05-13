@@ -29,4 +29,20 @@
     <string name="proximas_vacunas">Proximas Vacunas</string>
     <string name="registro">Registrarte</string>
     <string name="title_activity_registro">Registrate</string>
+    <string name="grupo_edad">Grupo O Edad</string>
+    <string-array name="grupos_vacunas">
+        <item>Recien Nacido</item>
+        <item>2 Meses</item>
+        <item>4 Meses</item>
+        <item>6 Meses</item>
+        <item>8 Meses</item>
+        <item>12 Meses</item>
+        <item>15 Meses</item>
+        <item>18 Meses</item>
+        <item>4 Años</item>
+        <item>5 Años</item>
+    </string-array>
+    <string name="title_activity_calendario">Calendario</string>
+    <string name="title_activity_probadera">probadera</string>
+
 </resources>

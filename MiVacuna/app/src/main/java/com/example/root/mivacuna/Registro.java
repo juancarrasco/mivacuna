@@ -212,7 +212,7 @@ public class Registro extends AppCompatActivity implements LoaderCallbacks<Curso
             cancel = true;
         }
 
-        if (!Objects.equals(password, password2)) {
+        if (!equals(password, password2)) {
             mPasswordView2.setError(getString(R.string.error_incorrect_password_repeat));
             focusView = mPasswordView;
             cancel = true;
@@ -241,7 +241,9 @@ public class Registro extends AppCompatActivity implements LoaderCallbacks<Curso
             mAuthTask.execute((Void) null);
         }
     }
-
+public static boolean equals(Object a, Object b) {
+    return (a == b) || (a != null && a.equals(b));
+}
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");

@@ -36,11 +36,23 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.root.mivacuna.LoginActivity" />
-        </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        </activity>
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".librerias.Calendario"
+            android:label="@string/title_activity_calendario"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".probadera"
+            android:label="@string/title_activity_probadera"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import com.example.root.mivacuna.librerias.FuncionesDeUsuario;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -68,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-
+    Button mRegistro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
-Button mRegistro = (Button) findViewById(R.id.registro_button);
+ mRegistro = (Button) findViewById(R.id.registro_button);
         mRegistro.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -242,6 +243,7 @@ Toast.makeText(this,"LISTO"+resultado,Toast.LENGTH_LONG).show();
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mRegistro.setVisibility(show ? View.GONE : View.VISIBLE);
             mLoginFormView.animate().setDuration(shortAnimTime).alpha(
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
                 @Override
@@ -359,6 +361,9 @@ Toast.makeText(this,"LISTO"+resultado,Toast.LENGTH_LONG).show();
 
         private final String mEmail;
         private final String mPassword;
+        String name;
+        int id;
+
 
         UserLoginTask(String email, String password) {
             mEmail = email;
@@ -372,11 +377,17 @@ Toast.makeText(this,"LISTO"+resultado,Toast.LENGTH_LONG).show();
             // Simulate network access.
             FuncionesDeUsuario userFunction = new FuncionesDeUsuario();
             JSONObject json = null;
+           JSONObject user = null;
             try {
                 json = userFunction.loginUser(mEmail,mPassword);
 
                 if (json.getString("token")!=null){
-                   return true;
+
+                     user =json.getJSONObject("user");
+Log.i("Bienvenido!!!!!!!!!",user.getString("name"));
+                     name=user.getString("name");
+                    imprime(user.getString("name")+"aquiiiiiiiiiii!!!!!!");
+                    return true;
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -394,7 +405,10 @@ Toast.makeText(this,"LISTO"+resultado,Toast.LENGTH_LONG).show();
             showProgress(false);
 
             if (success) {
+
                 Intent main = new Intent(getApplicationContext(),MainActivity.class);
+                main.putExtra("email",mEmail);
+                main.putExtra("name",name);
                 startActivity(main);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

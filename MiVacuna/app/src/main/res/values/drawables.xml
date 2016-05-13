@@ -1,8 +1,17 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_my_calendar</item>
+    <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
     <item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_today</item>
     <item name="ic_menu_slideshow" type="drawable">@android:drawable/ic_menu_slideshow</item>
     <item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>
     <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
     <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
+    <item name="calendar" type="drawable">@drawable/calendar</item>
+    <item name="calendar_clock" type="drawable">@drawable/calendar_clock</item>
+    <item name="calendar_multiple_check" type="drawable">@drawable/calendar_multiple_check</item>
+    <item name="needle" type="drawable">@drawable/needle</item>
+    <item name="settings" type="drawable">@drawable/settings</item>
+    <item name="close" type="drawable">@drawable/close</item>
+    <item name="hospital_building" type="drawable">@drawable/hospital_building</item>
+    <item name="account" type="drawable">@drawable/account</item>
+
 </resources>
