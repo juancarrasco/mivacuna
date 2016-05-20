@@ -34,7 +34,6 @@ LayoutInflater inflater = (LayoutInflater) context
      convertView = inflater.inflate(R.layout.list_vacunas, parent, false);
 
 
-        Log.w("ERROR aquiIIIIIIIII",convertView.toString());
 vacunas vacuna = getItem(position);
 
         TextView textViewName = (TextView) convertView.findViewById(R.id.textViewTitulo);

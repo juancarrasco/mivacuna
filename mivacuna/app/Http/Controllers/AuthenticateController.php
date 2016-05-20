@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
 use App\Http\Requests;
 use JWTAuth;
+use DB;
 use Tymon\JWTAuth\Exceptions\JWTException;
 class AuthenticateController extends Controller
 {
@@ -42,8 +42,10 @@ $this->middleware('jwt.auth',['except'=>['authenticate','storeUser']]);
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
+ $email= $request->email;
+$user = DB::table('users')->where('email', $email)->first();
         // all good so return the token
-        return response()->json(compact('token'));
+        return response()->json(compact('token','user'));
     }
 
 

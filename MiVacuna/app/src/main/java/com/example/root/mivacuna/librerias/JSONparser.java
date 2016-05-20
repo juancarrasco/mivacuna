@@ -60,9 +60,16 @@ public class JSONparser {
             int responseCode = conn.getResponseCode();
             System.out.println("\nSending 'POST' request to URL : " + url);
             System.out.println("Response Code : " + responseCode);
+            BufferedReader in = null;
+if (responseCode==401){
+    InputStream is = conn.getErrorStream();
 
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(conn.getInputStream()));
+    in = new BufferedReader(new InputStreamReader(is));
+}else {
+     in = new BufferedReader(
+            new InputStreamReader(conn.getInputStream()));
+}
+
             String inputLine;
             StringBuffer response = new StringBuffer();
 

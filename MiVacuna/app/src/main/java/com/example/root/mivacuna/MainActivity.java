@@ -1,10 +1,13 @@
 package com.example.root.mivacuna;
 
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,21 +19,33 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.app.ActionBar;
+
+import com.example.root.mivacuna.librerias.SlidingTabLayout;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, CalendarioFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        ConsultarCalendarioFragment.OnFragmentInteractionListener,
+        CalendarioFragment.OnFragmentInteractionListener,
+BlankFragment.OnFragmentInteractionListener{
+    private static android.support.v4.view.ViewPager mViewPager;
+    Resources resources;
 
     TextView textViewUsuario;
     TextView textViewEmail;
     String name;
     String email;
+    SlidingTabLayout mSlidingTabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+         mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
+        mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.colorAccent));
+        mSlidingTabLayout.setDistributeEvenly(true);
       /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +55,7 @@ public class MainActivity extends AppCompatActivity
             }
         }); */
         Bundle extras = getIntent().getExtras();
+
 
          name = extras.getString("name");
         email=extras.getString("email");
@@ -98,18 +114,38 @@ public class MainActivity extends AppCompatActivity
 Fragment fragment = null;
         boolean FragmentTransaction= false;
         if (id == R.id.nav_calendar) {
-fragment=new CalendarioFragment();
-            FragmentTransaction=true;
 
-        } else if (id == R.id.nav_personas) {
 
-        } else if (id == R.id.nav_centros) {
+            mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
 
-        } else if (id == R.id.nav_vacunas) {
 
-        } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+            mSlidingTabLayout.setViewPager(mViewPager);
+
+
+        } else if (id == R.id.nav_personas) {FragmentTransaction=true;
+            fragment=new BlankFragment();
+mViewPager.setAdapter(null);
+mSlidingTabLayout.setViewPager(null);
+        } else if (id == R.id.nav_centros) {FragmentTransaction=true;
+            fragment=new BlankFragment();
+mViewPager.setAdapter(null);
+
+            mSlidingTabLayout.setViewPager(null);
+
+        } else if (id == R.id.nav_vacunas) {FragmentTransaction=true;
+            fragment=new BlankFragment();
+
+            mSlidingTabLayout.setViewPager(null);
+
+        } else if (id == R.id.nav_share) {FragmentTransaction=true;
+            fragment=new BlankFragment();
+
+            mSlidingTabLayout.setViewPager(null);
+
+        } else if (id == R.id.nav_send) {FragmentTransaction=true;
+            fragment=new BlankFragment();
+
 
         }
  if(FragmentTransaction) {
@@ -127,6 +163,10 @@ fragment=new CalendarioFragment();
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+    public static void cambiarTabs(int i){
+        mViewPager.setCurrentItem(i);
 
     }
 }

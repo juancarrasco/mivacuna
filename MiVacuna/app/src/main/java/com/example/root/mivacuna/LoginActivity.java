@@ -357,7 +357,7 @@ Toast.makeText(this,"LISTO"+resultado,Toast.LENGTH_LONG).show();
      * the user.
      * LOGIN
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    public class UserLoginTask extends AsyncTask<Void, Void, JSONObject> {
 
         private final String mEmail;
         private final String mPassword;
@@ -371,7 +371,7 @@ Toast.makeText(this,"LISTO"+resultado,Toast.LENGTH_LONG).show();
         }
 
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected JSONObject doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
             // Simulate network access.
@@ -381,13 +381,13 @@ Toast.makeText(this,"LISTO"+resultado,Toast.LENGTH_LONG).show();
             try {
                 json = userFunction.loginUser(mEmail,mPassword);
 
-                if (json.getString("token")!=null){
+                if (json.has("token")){
 
                      user =json.getJSONObject("user");
 Log.i("Bienvenido!!!!!!!!!",user.getString("name"));
                      name=user.getString("name");
                     imprime(user.getString("name")+"aquiiiiiiiiiii!!!!!!");
-                    return true;
+                    return user;
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -396,15 +396,15 @@ Log.i("Bienvenido!!!!!!!!!",user.getString("name"));
             }
 
 
-            return false;
+            return json;
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
+        protected void onPostExecute( JSONObject success) {
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
+            if (success.has("name")) {
 
                 Intent main = new Intent(getApplicationContext(),MainActivity.class);
                 main.putExtra("email",mEmail);

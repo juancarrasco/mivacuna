@@ -44,5 +44,6 @@
     </string-array>
     <string name="title_activity_calendario">Calendario</string>
     <string name="title_activity_probadera">probadera</string>
+    <string name="grupos_o_edades">Grupos o Edades</string>
 
 </resources>

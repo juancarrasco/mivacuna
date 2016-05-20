@@ -9,8 +9,8 @@ import org.json.JSONObject;
 public class FuncionesDeUsuario {
     private JSONparser jsonParser;
     //URLS
-    private static String loginURL = "http://192.168.0.101:8000/api/v1/iniciarSesion";
-    private static String CreateURL = "http://192.168.0.101:8000/api/v1/crearUser";
+    private static String loginURL = "http://192.168.0.102:8000/api/v1/iniciarSesion";
+    private static String CreateURL = "http://192.168.0.102:8000/api/v1/crearUser";
 
     public FuncionesDeUsuario() {
         this.jsonParser = new JSONparser();
